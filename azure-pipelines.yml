@@ -1,0 +1,16 @@
+trigger:
+  - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  dockerImage: 'hello-world'
+
+steps:
+  - task: Docker@2
+    inputs:
+      command: 'run'
+      image: '$(dockerImage)'
+      detach: true
+      ports: '8080:80'
